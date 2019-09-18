@@ -1,0 +1,60 @@
+version: "3.3"
+services:
+  lb:
+    build:
+      context: "./_nginx-lb"
+    image: 582134818551.dkr.ecr.ap-northeast-1.amazonaws.com/addix/faro-sns-lb
+    deploy:
+      replicas: 1
+      resources:
+        limits:
+          cpus: '0.05'
+          memory: 50M
+      restart_policy:
+        condition: on-failure
+    networks:
+      - overlay
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - "webap"
+  webap:
+    build: "./_php-webap"
+    image: 582134818551.dkr.ecr.ap-northeast-1.amazonaws.com/addix/faro-sns-webap
+    deploy:
+      replicas: 1
+      resources:
+        limits:
+          cpus: '0.1'
+          memory: 100M
+      restart_policy:
+        condition: on-failure
+    networks:
+      - overlay
+    volumes:
+      - ".:/var/www/faro-sns"
+    environment:
+      APACHE_DOCUMENT_ROOT: "/var/www/faro-sns/public"
+    depends_on:
+      - "db"
+    command: ["sh", "_php-webap/command.sh"]
+  db:
+    image: mysql:5.6.38
+    deploy:
+      replicas: 1
+      resources:
+        limits:
+          cpus: '0.1'
+          memory: 500M
+      restart_policy:
+        condition: on-failure
+    networks:
+      - overlay
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: faro_sns
+networks:
+  overlay:

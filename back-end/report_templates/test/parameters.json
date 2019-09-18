@@ -1,0 +1,10 @@
+{
+  "env": "local",
+  "access_token": "YOUR_ACCESS_TOKEN",
+  "app_id": "170882133419451",
+  "app_secret": "6f2063d4642b0da02eb74692ad27f595",
+  "dateRange": [
+    "2017-01-01",
+    "2017-02-01"
+  ]
+}

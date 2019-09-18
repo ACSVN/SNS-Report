@@ -1,0 +1,68 @@
+/*index page*/
+#inputPageName{
+	pointer-events:none;
+}
+
+/*#startDt, #endDt{
+	width: 100px;
+	margin-bottom: 10px;
+}
+
+#inputPageName {
+	width:auto;
+}
+
+#inputReportName{
+	width: 200px;
+	margin-bottom: 10px;
+}*/
+
+.form-make-report, .form-download-report{
+    margin: 0 auto;
+    width: 50%;
+}
+
+#alert_msg{
+	color: red;
+}
+
+/*download page*/
+/*.btn-download-report{
+	position: absolute;
+    left: 50%;
+}
+*/
+body #box-lock-report{
+	/*margin-left: -246px;*/
+	min-height: 950px;
+    background-color: #ecf0f5; 
+    /*background-color: blue;*/
+    opacity: 0.7;
+    z-index: 1100;
+    margin-top: -1000px;
+    /*margin-left: -800px;*/
+    position: relative;
+}
+#box-lock-report i{
+	position: absolute; 
+	left: 65% !important; 
+	top: 55% !important;
+	font-size: 90px;
+}
+
+#box-lock-report span{
+	left: 65% !important; 
+	top: 65% !important; 
+	overflow: visible !important;
+    clip: auto !important;
+    font-size: 30px;
+}
+
+table#social_accounts>tbody>tr>td:last-child{
+	text-align: center;
+}
+
+.alert-dismissible{
+	margin-top: 50px;
+	width: 78%;
+}
